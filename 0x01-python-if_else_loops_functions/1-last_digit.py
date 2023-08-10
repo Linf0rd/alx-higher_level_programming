@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import random
 number = random.randint(-10000, 10000)
-last_digit = divmod(abs(number), 10)[1]
+_, last_digit = divmod(abs(number), 10)
 print("Last digit of", number, "is", last_digit, end=" ")
 if number < 0:
     last_digit = -last_digit
