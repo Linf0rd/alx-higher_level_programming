@@ -26,7 +26,7 @@ class Square:
     @property
     def size(self):
         """
-        Get method to retrieve the size of the square.
+        Getter method to retrieve the size of the square.
 
         Returns:
             int: The size of the square.
