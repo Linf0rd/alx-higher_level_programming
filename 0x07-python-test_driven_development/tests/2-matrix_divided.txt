@@ -1,0 +1,12 @@
+"""
+This module contains the test cases for the matrix_divided function ``matrix_divided(matrix, div)``
+
+"""
+
+=====
+Usage
+=====
+
+``matrix_divided(...)`` returns a new matrix that is a copy of the parameter ``matrix`` with all elements divided by ``div``.
+
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
