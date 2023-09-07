@@ -50,6 +50,7 @@ class Rectangle:
         Getter method to retrieve the height of the rectangle.
 
         """
+        return self.__height
 
     @height.setter
     def height(self, value):
