@@ -1,0 +1,24 @@
+#!/usr/bin/python3
+"""
+This module contains the test cases for the text_indentation function.
+
+"""
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("Period.")
+Period.
+<BLANKLINE>
+
+>>> text_indentation("What do you mean?")
+What do you mean?
+<BLANKLINE>
+
+>>> text_indentation(".")
+.
+<BLANKLINE>
+
+>>> text_indentation("Seriously?")
+Seriously?
+<BLANKLINE>
+
