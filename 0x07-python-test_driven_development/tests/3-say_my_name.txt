@@ -1,0 +1,26 @@
+
+"""
+This module contains the test cases for the say_my_name function.
+
+"""
+
+>>> say_my_name = __import__("3-say_my_name").say_my_name
+
+>>> say_my_name("Elon", "Musk")
+My name is Elon Musk
+
+>>> say_my_name("Homer", "Simpson")
+My name is Homer Simpson
+
+>>> say_my_name(None, "Musk")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name("Homer", None)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+
+
