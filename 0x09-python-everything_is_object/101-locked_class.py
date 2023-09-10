@@ -3,6 +3,7 @@
 Locked class
 """
 
+
 class LockedClass:
     """
     No attribute creation unless it is 'first_name'
