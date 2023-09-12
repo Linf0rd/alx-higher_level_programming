@@ -2,7 +2,7 @@
 """
 Define a JSON-to-object function.
 """
-import
+import json
 
 
 def from_json_string(my_str):
