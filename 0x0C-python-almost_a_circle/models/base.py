@@ -70,5 +70,5 @@ class Base:
                 json_list = cls.from_json_string(json_str)
                 instances = [cls.create(**d) for d in json_list]
                 return instances
-            except FileNotFoundError:
+        except FileNotFoundError:
                 return []
