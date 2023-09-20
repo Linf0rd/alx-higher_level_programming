@@ -42,6 +42,40 @@ class TestBase(unittest.TestCase):
         b7 = Base("abc")
         self.assertEqual(b7.id, "abc")
 
+    def test_base_auto_id(self):
+        obj1 = Base()
+        obj2 = Base()
+        self.assertEqual(obj1.id, obj2.id - 1)
+
+    def test_base_custom_id(self):
+        obj = Base(89)
+        self.assertEqual(obj.id, 89)
+
+    def test_to_json_string_with_none(self):
+        result = Base.to_json_string(None)
+        self.assertIsNotNone(result)
+
+    def test_to_json_string_with_empty_list(self):
+        result = Base.to_json_string([])
+        self.assertIsNotNone(result)
+
+    def test_to_json_string_with_list(self):
+        data = [{"id": 12}]
+        result = Base.to_json_string(data)
+        self.assertIsInstance(result, str)
+
+    def test_from_json_string_exists(self):
+        self.assertTrue(hasattr(Base, "from_json_string"))
+
+    def test_from_json_string_with_empty_string(self):
+        result = Base.from_json_string("[]")
+        self.assertIsInstance(result, list)
+
+    def test_from_json_string_with_string(self):
+        data = '[{ "id": 89 }]'
+        result = Base.from_json_string(data)
+        self.assertIsInstance(result, list)
+
 
 if __name__ == "__main__":
     unittest.main()
