@@ -52,6 +52,28 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(ValueError):
             r = Rectangle(10, 20, 2, -3)
 
+class TestRectangleCreation(unittest.TestCase):
+    """Unittests for creating Rectangle instances with different numbers of arguments."""
+
+    def test_rectangle_creation_2_args(self):
+        try:
+            rect = Rectangle(1, 2)
+        except Exception as e:
+            self.fail(f"Failed to create Rectangle(1, 2): {e}")
+
+    def test_rectangle_creation_3_args(self):
+        try:
+            rect = Rectangle(1, 2, 3)
+        except Exception as e:
+            self.fail(f"Failed to create Rectangle(1, 2, 3): {e}")
+
+    def test_rectangle_creation_4_args(self):
+        try:
+            rect = Rectangle(1, 2, 3, 4)
+        except Exception as e:
+            self.fail(f"Failed to create Rectangle(1, 2, 3, 4): {e}")
+
+
 
 if __name__ == '__main__':
     unittest.main()
