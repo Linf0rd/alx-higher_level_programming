@@ -23,23 +23,41 @@ class Base:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
 
-    @staticmethod
-    def to_json_string(list_dictionaries):
+    @classmethod
+    def to_json_string(cls, list_dicts):
         """Return the JSON string representation of list_dictionaries."""
-        if list_dictionaries is None or len(list_dictionaries) == 0:
+        if list_dicts is None or len(list_dicts) == 0:
             return "[]"
-        return json.dumps(list_dictionaries)
+        return json.dumps(list_dicts)
+
+    @classmethod
+    def from_json_string(cls, json_str):
+        """Return a list of dictionaries from a JSON string."""
+        if json_str is None or len(json_str) == 0:
+            return []
+        return json.loads(json_str)
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """Write JSON string representation of list_objs to a file."""
-        if list_objs is None:
-            list_objs = []
-            filename = cls.__name__ + ".json"
-            with open(filename, "w") as file:
-                json_str = cls.to_json_string(
-                    [obj.to_dictionary() for obj in list_objs])
-                file.write(json_str)
+        """Save a list of instances to a JSON file."""
+        filename = cls.__name__ + ".json"
+        with open(filename, "w") as file:
+            if list_objs is None:
+                file.write("[]")
+            else:
+                dict_list = [obj.to_dictionary() for obj in list_objs]
+                file.write(cls.to_json_string(dict_list))
+
+    def load_from_file(cls):
+        """Load a list of instances from a JSON file."""
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, "r") as file:
+                json_str = file.read()
+                dict_list = cls.from_json_string(json_str)
+                return [cls.create(**d) for d in dict_list]
+        except FileNotFoundError:
+            return []
 
     @staticmethod
     def from_json_string(json_string):
