@@ -37,7 +37,8 @@ class Base:
             list_objs = []
             filename = cls.__name__ + ".json"
             with open(filename, "w") as file:
-                json_str = cls.to_json_string([obj.to_dictionary() for obj in list_objs])
+                json_str = cls.to_json_string(
+                    [obj.to_dictionary() for obj in list_objs])
                 file.write(json_str)
 
     @staticmethod
@@ -59,7 +60,6 @@ class Base:
         dummy_instance.update(**dictionary)
         return dummy_instance
 
-
     @classmethod
     def load_from_file(cls):
         """Load instances from a JSON file and return a list of instances."""
@@ -71,4 +71,4 @@ class Base:
                 instances = [cls.create(**d) for d in json_list]
                 return instances
         except FileNotFoundError:
-                return []
+            return []
