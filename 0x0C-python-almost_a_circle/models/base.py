@@ -3,6 +3,7 @@
 Defines the Base class.
 """
 import json
+import csv
 
 
 class Base:
@@ -48,6 +49,7 @@ class Base:
                 dict_list = [obj.to_dictionary() for obj in list_objs]
                 file.write(cls.to_json_string(dict_list))
 
+    @classmethod
     def load_from_file(cls):
         """Load a list of instances from a JSON file."""
         filename = cls.__name__ + ".json"
@@ -56,6 +58,49 @@ class Base:
                 json_str = file.read()
                 dict_list = cls.from_json_string(json_str)
                 return [cls.create(**d) for d in dict_list]
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Save a list of instances to a CSV file."""
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w", newline='') as file:
+            csv_writer = csv.writer(file)
+            for obj in list_objs:
+                if cls.__name__ == 'Rectangle':
+                    csv_writer.writerow(
+                        [obj.id, obj.width, obj.height, obj.x, obj.y])
+                elif cls.__name__ == 'Square':
+                    csv_writer.writerow([obj.id, obj.size, obj.x, obj.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Load a list of instances from a CSV file."""
+        filename = cls.__name__ + ".csv"
+        instances = []
+        try:
+            with open(filename, "r", newline='') as file:
+                csv_reader = csv.reader(file)
+                for row in csv_reader:
+                    if cls.__name__ == 'Rectangle':
+                        d = {
+                            'id': int(row[0]),
+                            'width': int(row[1]),
+                            'height': int(row[2]),
+                            'x': int(row[3]),
+                            'y': int(row[4])
+                        }
+                        instances.append(cls.create(**d))
+                    elif cls.__name__ == 'Square':
+                        d = {
+                            'id': int(row[0]),
+                            'size': int(row[1]),
+                            'x': int(row[2]),
+                            'y': int(row[3])
+                        }
+                        instances.append(cls.create(**d))
+            return instances
         except FileNotFoundError:
             return []
 
