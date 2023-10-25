@@ -1,4 +1,4 @@
--- Creates the database hbtn_0d_usa if it doesn't exist
+-- Creates the database hbtn_0d_usa if it doesn't exist.
 CREATE DATABASE IF NOT EXISTS hbtn_0d_usa;
 
 -- Switches to the hbtn_0d_usa database
