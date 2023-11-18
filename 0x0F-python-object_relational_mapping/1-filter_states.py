@@ -13,7 +13,6 @@ def main():
     Main function
     """
 
-
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -34,6 +33,7 @@ def main():
     cursor.close()
 
     db.close()
+
 
 if __name__ == "__main__":
     main()
