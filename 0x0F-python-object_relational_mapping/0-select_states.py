@@ -12,8 +12,6 @@ def main():
     Main function
     """
 
-if __name__ == "__main__":
-    main()
 
     db = MySQLdb.connect(
         host="localhost",
@@ -34,3 +32,6 @@ if __name__ == "__main__":
 
     db.close()
 
+
+if __name__ == "__main__":
+    main()
