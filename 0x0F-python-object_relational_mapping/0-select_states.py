@@ -12,7 +12,6 @@ def main():
     Main function
     """
 
-
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
