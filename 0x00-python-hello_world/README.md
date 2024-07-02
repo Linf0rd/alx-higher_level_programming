@@ -93,7 +93,7 @@ Welcome to the Python Hello World project of the ALX Higher-Level Programming cu
 
  
  
-              3 LOAD_CONST		 1 (98)
+              3 LOAD_CONST               1 (98)
               3 LOAD_FAST                0 (a)
               6 LOAD_FAST                1 (b)
               9 BINARY_POWER
